@@ -2,31 +2,28 @@ package com.java.tasks.task8;
 
 public class AccountManager {
     public static boolean transfer(Account[] accounts, int[] delta) {
-        if (accounts == null || accounts.length == 0) {
-            return false;
-        }
-
-        for (int i = 0; i < accounts.length; i++) {
+        int index = 0;
+        while (index < accounts.length) {
             try {
-                accounts[i].change(delta[i]);
-            } catch (TryAgainException ex) {
-                i -= 1;
-            } catch (BlockAccountException ex) {
-                for (int f = i - 1; f > -1; f--) {
-                    try {
-                        accounts[f].change(-(delta[f]));
-                    } catch (TryAgainException e) {
-                        f += 1;
-                    } catch (Exception e) {
-
+                accounts[index].change(delta[index]);
+            } catch (TryAgainException e) {
+                continue;
+            } catch (BlockAccountException e) {
+                try {
+                    for (int index2 = 0; index2 < index; index2++) {
+                        accounts[index2].change(-delta[index2]);
                     }
+                } catch (TryAgainException | BlockAccountException e2) {
+                    // do
                 }
+                return false;
             }
+            index++;
         }
-        return false;
+        return true;
     }
 
-    abstract static class Account {
+    abstract class Account {
         protected int amount;
 
         public Account(int amount) {
@@ -40,14 +37,17 @@ public class AccountManager {
         }
     }
 
-
     class TryAgainException extends Exception {
     }
 
-    static class BlockAccountException extends Exception {
+    class BlockAccountException extends Exception {
     }
 
     public static void main(String[] args) {
+        new AccountManager().run();
+    }
+
+    public void run() {
         Account[] testAccounts = new Account[3];
         int[] testDelta = {100, 343, 245};
         int accountSum0 = 10;
