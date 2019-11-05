@@ -1,4 +1,4 @@
-package com.sd.tasks.task4;
+package com.java.tasks.task4;
 
 /*
 Реализовать метод, который преобразует BigInteger в битовую строку (String из '0' и '1')

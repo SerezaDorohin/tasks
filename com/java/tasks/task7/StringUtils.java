@@ -1,4 +1,4 @@
-package com.sd.tasks.task7;
+package com.java.tasks.task7;
 
 /*
 * Реализовать функцию, которая делает циклический сдвиг букв вправо,

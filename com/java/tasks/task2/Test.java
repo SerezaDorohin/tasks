@@ -1,4 +1,4 @@
-package com.sd.tasks.task2;
+package com.java.tasks.task2;
 
 public class Test {
     public static void main(String[] args) {

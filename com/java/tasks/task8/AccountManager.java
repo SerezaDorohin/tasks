@@ -1,4 +1,4 @@
-package com.sd.tasks.task8;
+package com.java.tasks.task8;
 
 public class AccountManager {
     public static boolean transfer(Account[] accounts, int[] delta) {

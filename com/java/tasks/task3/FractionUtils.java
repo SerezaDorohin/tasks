@@ -1,4 +1,4 @@
-package com.sd.tasks.task3;
+package com.java.tasks.task3;
 
 import java.math.BigInteger;
 

@@ -1,4 +1,4 @@
-package com.sd.tasks.task1;
+package com.java.tasks.task1;
 
 public class Liner extends AbstractShip {
 
